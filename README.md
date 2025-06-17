@@ -22,6 +22,8 @@
             --dark: #212529;
             --gray: #495057;
             --light-gray: #e9ecef;
+            --warning-red: #8b0000;
+            --warning-bg: #fff0f0;
         }
 
         body {
@@ -358,6 +360,103 @@
             font-weight: bold;
         }
 
+        /* FDA Box Warning */
+        .fda-warning {
+            background-color: var(--warning-bg);
+            border: 2px solid var(--warning-red);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(139, 0, 0, 0.15);
+        }
+
+        .fda-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--warning-red);
+        }
+
+        .fda-icon {
+            font-size: 28px;
+            margin-right: 12px;
+        }
+
+        .fda-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .fda-content {
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        .fda-content p {
+            margin-bottom: 15px;
+        }
+
+        .fda-content strong {
+            color: var(--warning-red);
+        }
+
+        /* Auxiliary Labels */
+        .auxiliary-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .aux-label {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .aux-label:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .aux-label::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(to bottom, #2c3e50, #1a1a1a);
+        }
+
+        .label-title {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #d0d0d0;
+            font-weight: 600;
+        }
+
+        .label-content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .label-icon {
+            display: block;
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
         /* Footer */
         .footer {
             background: linear-gradient(to right, #000, #1a1a1a);
@@ -418,6 +517,10 @@
                 padding: 8px 12px;
                 font-size: 12px;
             }
+            
+            .auxiliary-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -450,6 +553,9 @@
                 </button>
                 <button class="nav-btn" onclick="scrollToSection('safety')">
                     <i class="fas fa-exclamation-triangle"></i> Safety
+                </button>
+                <button class="nav-btn" onclick="scrollToSection('fda')">
+                    <i class="fas fa-exclamation-circle"></i> FDA Warning
                 </button>
             </div>
         </div>
@@ -740,6 +846,90 @@ alt="Drug Interactions" style="max-width: 500px;">
             </div>
         </div>
 
+        <!-- FDA Box Warning -->
+        <div class="monograph-card" id="fda">
+            <h2 class="section-title">FDA Box Warning</h2>
+            <div class="fda-warning">
+                <div class="fda-header">
+                    <div class="fda-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="fda-title">FDA BLACK BOX WARNING</div>
+                </div>
+                <div class="fda-content">
+                    <p><strong>CONCOMITANT USE OF BENZODIAZEPINES AND OPIOIDS</strong></p>
+                    <p>Concomitant use of benzodiazepines and opioids may result in profound sedation, respiratory depression, coma, and death.</p>
+                    <p><strong>RISKS INCLUDE:</strong></p>
+                    <ul class="dosing-list">
+                        <li>Profound sedation</li>
+                        <li>Respiratory depression</li>
+                        <li>Coma</li>
+                        <li>Death</li>
+                    </ul>
+                    <p><strong>PRESCRIBING RECOMMENDATIONS:</strong></p>
+                    <ul class="dosing-list">
+                        <li>Reserve concomitant prescribing for patients with inadequate alternative treatment options</li>
+                        <li>Limit dosages and durations to the minimum required</li>
+                        <li>Monitor patients for signs and symptoms of respiratory depression and sedation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Auxiliary Labels -->
+        <div class="monograph-card" id="auxiliary">
+            <h2 class="section-title">Auxiliary Labels</h2>
+            <p>Important labels to include with alprazolam prescriptions to ensure safe use:</p>
+            
+            <div class="auxiliary-container">
+                <div class="aux-label">
+                    <div class="label-icon"><i class="fas fa-capsules"></i></div>
+                    <h3 class="label-title">Take Exactly as Prescribed</h3>
+                    <div class="label-content">
+                        Do not increase dose or frequency without consulting your healthcare provider. Benzodiazepines can cause dependence.
+                    </div>
+                </div>
+                
+                <div class="aux-label">
+                    <div class="label-icon"><i class="fas fa-car-crash"></i></div>
+                    <h3 class="label-title">May Cause Drowsiness</h3>
+                    <div class="label-content">
+                        Avoid driving or operating machinery until you know how this medication affects you. Alcohol may increase drowsiness.
+                    </div>
+                </div>
+                
+                <div class="aux-label">
+                    <div class="label-icon"><i class="fas fa-exclamation-circle"></i></div>
+                    <h3 class="label-title">Do Not Stop Suddenly</h3>
+                    <div class="label-content">
+                        Abrupt discontinuation may cause withdrawal symptoms. Consult your doctor for a gradual tapering schedule.
+                    </div>
+                </div>
+                
+                <div class="aux-label">
+                    <div class="label-icon"><i class="fas fa-wine-bottle"></i></div>
+                    <h3 class="label-title">Avoid Alcohol</h3>
+                    <div class="label-content">
+                        Alcohol increases sedative effects and risk of respiratory depression. Do not consume alcoholic beverages while taking this medication.
+                    </div>
+                </div>
+                
+                <div class="aux-label">
+                    <div class="label-icon"><i class="fas fa-pills"></i></div>
+                    <h3 class="label-title">Potential for Abuse</h3>
+                    <div class="label-content">
+                        This medication has potential for abuse and may lead to addiction. Keep in a secure location and never share with others.
+                    </div>
+                </div>
+                
+                <div class="aux-label">
+                    <div class="label-icon"><i class="fas fa-user-md"></i></div>
+                    <h3 class="label-title">Medical Supervision Required</h3>
+                    <div class="label-content">
+                        Regular monitoring by healthcare provider is essential. Report any unusual thoughts, behaviors, or side effects immediately.
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Storage -->
         <div class="monograph-card">
             <h2 class="section-title">Storage</h2>
@@ -816,6 +1006,8 @@ alt="Drug Interactions" style="max-width: 500px;">
                 <li>Wikipedia - Alprazolam</li>
                 <li>Medscape</li>
                 <li>NIH - Alprazolam</li>
+                <li>FDA Drug Safety Communication (2020)</li>
+                <li>Clinical Pharmacology of Alprazolam, Journal of Clinical Psychiatry</li>
             </ol>
         </div>
     </div>
